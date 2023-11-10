@@ -1,5 +1,15 @@
 export default async function TabelaDados() {
-  const response = await fetch("http://localhost:3000/api/laticinios");
+  let username = 'Ronald The Trucker';
+  let password = '123456';
+  let auth = btoa(`${username}:${password}`);
+
+  const response = await fetch("http://localhost:8080/WebSMApi/api/produto", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Basic ${auth}`
+    },
+  });
   const queijos = await response.json();
 
   return (
